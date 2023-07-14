@@ -2,7 +2,7 @@ const multer = require('multer')
 
 // add enctype="multipart/form-data" to form
 
-export const multerStorage = {
+exports.multerStorage = {
     storage: multer.diskStorage({  //using multer to save files
         filename: (req, file, cb) => {
             cb(null, file.originalname)

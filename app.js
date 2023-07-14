@@ -6,7 +6,7 @@ var logger = require('morgan');
 const csrf = require("csurf")
 const multer=require('multer')
 const session = require("express-session")
-import { multerStorage } from './multer/multer';
+const multerStorage=require('./multer/multer')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs')
-const db = require("../util/database")
+const db = require("../util/sqlDatabase")
 
 exports.getLogin = (req, res, next) => {
     res.render('authentication/Login', {
