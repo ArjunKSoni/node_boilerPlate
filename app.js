@@ -5,7 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const csrf = require("csurf")
 const multer=require('multer')
-const session = require("express-session");
+const session = require("express-session")
+import { multerStorage } from './multer/multer';
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -27,22 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(csrfProtection)
 
 ////multer to haldle files
-// app.use(multer({
-//   storage:multer.diskStorage({  //using multer to save files
-//       filename:(req,file,cb)=>{
-//           cb(null,file.originalname)
-//       },
-//       destination:(req,file,cb)=>{
-//           cb(null,'images')  // null is for the error message and 2 argument is the place to store image
-//       },
-//   }),
-//   fileFilter:(req,file,cb)=>{
-//       if(file.mimetype==='image/png' || file.mimetype==='image/jpg' || file.mimetype==='image/jpeg'){
-//           cb(null,true);
-//       }
-//       else cb(null,false);
-//   }
-// }).single('imageUrl')) ///to handle file type data {also use enctype in html form component}
+app.use(multer(multerStorage).single('imageUrl'))
 
 //routes
 app.use('/', indexRouter);
